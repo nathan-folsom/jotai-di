@@ -1,8 +1,9 @@
 import React from 'react';
 import styled from 'styled-components';
-import ProviderContainer from "./components/provider/ProviderContainer";
-import { atom, Provider } from "jotai";
-import Counter from "./components/counter/Counter";
+import { atom } from "jotai";
+import GlobalProvider from "./components/provider/GlobalProvider";
+import NormalProvider from "./components/provider/NormalProvider";
+import ScopedProvider from "./components/provider/ScopedProvider";
 
 const Container = styled.div`
   width: 100%;
@@ -25,9 +26,7 @@ const PageTitle = styled.h1`
   margin-top: 0;
 `;
 
-const Title = styled.h2`
-  margin-top: 0;
-`;
+
 
 const Description = styled.p`
   font-size: 1.25rem;
@@ -36,8 +35,6 @@ const Description = styled.p`
 
 export const counterAtom = atom(0);
 
-const customScope = Symbol();
-
 function App() {
   return (
     <Container>
@@ -45,22 +42,9 @@ function App() {
       <Description>Explore and experiment with Jotai providers and how they capture state from atoms that are used within!</Description>
       <Description>Red button remounts its children, use it to see how state is reset when a provider unmounts.</Description>
       <GridContainer>
-        <ProviderContainer>
-          <Title>Global Provider</Title>
-          <Counter />
-        </ProviderContainer>
-        <ProviderContainer>
-          <Title>Normal Provider</Title>
-          <Provider>
-            <Counter />
-          </Provider>
-        </ProviderContainer>
-        <ProviderContainer>
-          <Title>Scoped Provider</Title>
-          <Provider scope={customScope}>
-            <Counter scope={customScope} />
-          </Provider>
-        </ProviderContainer>
+        <GlobalProvider />
+        <NormalProvider />
+        <ScopedProvider />
       </GridContainer>
     </Container>
   );
