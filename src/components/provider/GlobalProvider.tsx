@@ -1,6 +1,6 @@
 import React from "react";
 import Counter from "../counter/Counter";
-import ProviderContainer from "./ProviderContainer";
+import ProviderContainer from "./subcomponents/ProviderContainer";
 import { Title } from "./subcomponents/Title";
 
 export default function GlobalProvider() {
