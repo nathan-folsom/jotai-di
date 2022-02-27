@@ -1,10 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
-import { default as PickerBefore } from './components/picker/before/Picker';
-import { default as PickerAfter } from './components/picker/after/Picker';
-import { items } from './components/picker/items';
-import List from './components/picker/after/subcomponents/List';
-import Search from './components/picker/after/subcomponents/Search';
+import ProviderContainer from "./components/provider/ProviderContainer";
+import { atom } from "jotai";
 
 const Container = styled.div`
   display: flex;
@@ -14,18 +11,24 @@ const Container = styled.div`
   justify-content: center;
 `;
 
+const Title = styled.h2`
+  margin-top: 0;
+`;
+
+export const counterAtom = atom(0);
+
 function App() {
   return (
     <Container>
-      <PickerBefore options={items} enableSearch />
-      <PickerAfter options={items}>
-        {state => (
-          <>
-            <Search state={state} />
-            <List state={state} />
-          </>
-        )}
-      </PickerAfter>
+      <ProviderContainer>
+        <Title>Global Provider</Title>
+      </ProviderContainer>
+      <ProviderContainer>
+        <Title>Normal Provider</Title>
+      </ProviderContainer>
+      <ProviderContainer>
+        <Title>Scoped Provider</Title>
+      </ProviderContainer>
     </Container>
   );
 }
