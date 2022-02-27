@@ -5,10 +5,7 @@ const Container = styled.div`
   position: relative;
   text-align: center;
   background: white;
-  flex: 1 1 0;
   padding: 15px;
-  max-width: 300px;
-  margin: 10px;
 `;
 const RefreshButton = styled.button`
   width: 20px;
