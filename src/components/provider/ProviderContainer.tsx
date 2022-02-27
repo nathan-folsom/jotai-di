@@ -2,13 +2,11 @@ import React, { PropsWithChildren } from "react";
 import styled from "styled-components";
 
 const Container = styled.div`
+  text-align: center;
   background: white;
   flex: 1 1 0;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
   padding: 15px;
-  max-width: 200px;
+  max-width: 300px;
   margin: 5px;
 `;
 

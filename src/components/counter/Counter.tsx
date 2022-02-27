@@ -1,14 +1,31 @@
 import React from "react";
-import { PrimitiveAtom, useAtom } from "jotai";
+import styled from "styled-components";
+import CounterButton from "./CounterButton";
+import useIncrement from "../../hooks/useIncrement";
+import useDecrement from "../../hooks/useDecrement";
+import { counterAtom } from "../../App";
+import { useAtomValue } from "jotai";
+
+const Container = styled.div`
+  display: flex;
+  justify-content: center;
+`;
+
 
 export type CounterProps = {
-  atom: PrimitiveAtom<number>;
+  scope?: symbol;
 };
 
-export default function Counter({ atom }: CounterProps) {
-  const [value, setAtom] = useAtom(atom);
+export default function Counter({ scope }: CounterProps) {
+  const onIncrement = useIncrement(scope);
+  const onDecrement = useDecrement(scope);
+  const value = useAtomValue(counterAtom, scope);
 
   return (
-    <button onClick={() => setAtom(value + 1)}>{value}</button>
+    <Container>
+      <CounterButton onClick={onDecrement} title={"-"}/>
+      {value}
+      <CounterButton onClick={onIncrement} title={"+"}/>
+    </Container>
   );
 }
