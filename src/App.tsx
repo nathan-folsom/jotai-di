@@ -4,6 +4,7 @@ import { atom } from "jotai";
 import GlobalProvider from "./components/provider/GlobalProvider";
 import NormalProvider from "./components/provider/NormalProvider";
 import ScopedProvider from "./components/provider/ScopedProvider";
+import ExampleComponent from './components/example/ExampleComponent';
 
 const Container = styled.div`
   width: 100%;
@@ -38,14 +39,9 @@ export const counterAtom = atom(0);
 function App() {
   return (
     <Container>
-      <PageTitle>Jotai Provider Playground</PageTitle>
-      <Description>Explore and experiment with Jotai providers and how they capture state from atoms that are used within!</Description>
-      <Description>Red button remounts its children, use it to see how state is reset when a provider unmounts.</Description>
-      <GridContainer>
-        <GlobalProvider />
-        <NormalProvider />
-        <ScopedProvider />
-      </GridContainer>
+      <PageTitle>Jotai DI</PageTitle>
+      <Description>It works I guess</Description>
+      <ExampleComponent />
     </Container>
   );
 }
